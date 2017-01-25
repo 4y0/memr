@@ -1,9 +1,4 @@
 #!/usr/bin/env node
- 
-/**
- * Module dependencies.
- */
- 
 var program = require('commander'); 
 var commandAlias;
  

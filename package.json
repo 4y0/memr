@@ -1,8 +1,12 @@
 {
   "name": "memr",
   "version": "0.0.0",
-  "description": "CMD Logger",
+  "description": "CMD Logger", 
   "main": "index.js",
+  "preferGlobal": true,
+  "bin": {
+    "memr": "index.js"
+  },
   "scripts": {
     "test": "mocha --reporter spec"
   },
