@@ -8,7 +8,7 @@ var commandAlias;
 var localStorage = {};
 try{
 
-	var _JSONLocation = './storage/_.json';
+	var _JSONLocation = require('path').join(__dirname, 'storage/_.json');
 	localStorage = require(_JSONLocation);
 }
 catch(e){
