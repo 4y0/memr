@@ -1,0 +1,26 @@
+{
+  "name": "memr",
+  "version": "0.0.0",
+  "description": "CMD Logger",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4y0/memr.git"
+  },
+  "keywords": [
+    "log",
+    "logger"
+  ],
+  "author": "4y0",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/4y0/memr/issues"
+  },
+  "homepage": "https://github.com/4y0/memr#readme",
+  "dependencies": {
+    "commander": "2.9.0"
+  }
+}
