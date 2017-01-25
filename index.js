@@ -7,13 +7,25 @@
 var program = require('commander'); 
 var commandAlias;
  
+
+
 //Store in jsonfile 
+var localStorage = {};
+try{
 
+	var _JSONLocation = './storage/_.json';
+	localStorage = require(_JSONLocation);
+}
+catch(e){
+	
+	if(~e.message.indexOf('Cannot find module')){
+		require('fs').writeFileSync(_JSONLocation, JSON.stringify({}));
+	}
 
-var _JSONLocation = './storage/_.json';
+}
+
 function getStorage(){
 
-	var localStorage = require(_JSONLocation);
 	return localStorage;
 
 }
