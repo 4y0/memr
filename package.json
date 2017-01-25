@@ -1,7 +1,7 @@
 {
   "name": "memr",
-  "version": "0.0.0",
-  "description": "CMD Logger", 
+  "version": "0.0.1",
+  "description": "CMD Logger",
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
