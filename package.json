@@ -1,6 +1,6 @@
 {
   "name": "memr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CMD Logger",
   "main": "index.js",
   "preferGlobal": true,
