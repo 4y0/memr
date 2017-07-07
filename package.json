@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/4y0/memr#readme",
   "dependencies": {
-    "commander": "2.9.0"
+    "commander": "2.9.0",
+    "node-cmd": "3.0.0"
   }
 }

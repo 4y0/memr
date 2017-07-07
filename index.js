@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 var program = require('commander'); 
+var nc = require('node-cmd');
 var commandAlias;
  
 
@@ -43,6 +44,7 @@ program
   .option('-a, --add <vnmn>', 'Add a command to remember with an optional key to fetch it')
   .option('-l, --list', 'List all stored commands')
   .option('-c, --clear', 'List all stored commands')
+  .option('-x, --noexec', 'List all stored commands')
   .parse(process.argv);
 
 //Store a new command
@@ -75,13 +77,47 @@ if(program.list){
 if(program.clear){
 	updateStorage({});
 }
+	
+function processReplacements(command, args){
+
+	var subst_regex = /(\{[a-z0-9]+\})/ig;
+	var placeholders = command.match(subst_regex);
+
+	if(args.length > 1 && placeholders){
+
+		placeholders
+		.forEach(
+
+			function (p, i){
+				if(args[i + 1])
+				command = command.replace(p, args[i + 1]);
+			}
+		)
+
+	}
+	return command;
+}
 
 //get single command
 if(!program.list && !program.clear && !program.add){
 
+	console.log(program.args);
 	var file_rem_key = program.args[0];
-	if(file_rem_key && getStorage()[file_rem_key] ){
-		console.log( getStorage()[file_rem_key] ); 
+	if(file_rem_key && getStorage()[file_rem_key.trim()] ){
+
+		var command_to_recall = getStorage()[file_rem_key]; 
+
+		command_to_recall = (processReplacements(command_to_recall, program.args));
+		if(program.noexec){
+			console.log(command_to_recall);
+		}
+		else{
+			//nc.run(command_to_recall);
+			console.log("==== Running command: ", command_to_recall, " ====");
+			nc.get(command_to_recall, function (err, data, stderr){
+				console.log(data);
+			});
+		}
 	}
 	else{
 		console.log('No MEMR entry with the key', file_rem_key);
