@@ -89,8 +89,14 @@ function processReplacements(command, args){
 		.forEach(
 
 			function (p, i){
-				if(args[i + 1])
-				command = command.replace(p, args[i + 1]);
+				if(args[i + 1]){
+					var replacement = args[i + 1];
+					if(/\s/.test(replacement)){
+						replacement = '"' + replacement + '"';
+					}
+					command = command.replace(p, replacement);	
+				}
+				
 			}
 		)
 
